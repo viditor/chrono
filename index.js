@@ -7,9 +7,6 @@ var Temporality = React.createClass({
         }
     },
     componentDidMount: function() {
-        socket.on("establish connection", function() {
-            console.log("connection established!!")
-        })
         socket.on("add video", this.onAddVideo)
     },
     onAddVideo: function(video_id, video) {
