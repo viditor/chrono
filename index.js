@@ -3,14 +3,14 @@ var socket = io.connect("http://localhost:8080")
 var Temporality = React.createClass({
     getInitialState: function() {
         return {
-            videos: {}
+            assets: {}
         }
     },
     componentDidMount: function() {
-        socket.on("add video", this.onAddVideo)
+        socket.on("add asset", this.onAddVideo)
     },
-    onAddVideo: function(video_id, video) {
-        this.state.videos[video_id] = video
+    onAddVideo: function(asset) {
+        this.state.assets[asset.asset_id] = asset
         this.forceUpdate()
     },
     render: function() {
@@ -23,11 +23,11 @@ var Temporality = React.createClass({
     },
     renderVideos: function() {
         var renderings = []
-        for(var video_id in this.state.videos) {
-            var video = this.state.videos[video_id];
+        for(var asset_id in this.state.assets) {
+            var asset = this.state.assets[asset_id];
             renderings.push(
-                <div key={video_id}>
-                    {video}
+                <div key={asset_id}>
+                    {asset}
                 </div>
             )
         }
