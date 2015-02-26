@@ -7,16 +7,22 @@ var Temporality = React.createClass({
         }
     },
     componentDidMount: function() {
-        socket.on("add asset", this.onAddVideo)
+        socket.on("add asset", this.onSetAsset)
+        socket.on("update asset", this.onSetAsset)
     },
-    onAddVideo: function(asset) {
+    onSetAsset: function(asset) {
+        console.log(asset)
         this.state.assets[asset.asset_id] = asset
         this.forceUpdate()
     },
     render: function() {
         return (
-            <div id="content">
+            <div>
                 <h2>Viditor</h2>
+                <form onSubmit={this.onSubmitAsset}>
+                    <input ref="ytid" type="text"/>
+                    <input type="submit"/>
+                </form>
                 {this.renderVideos()}
             </div>
         )
@@ -27,11 +33,17 @@ var Temporality = React.createClass({
             var asset = this.state.assets[asset_id];
             renderings.push(
                 <div key={asset_id}>
-                    {asset}
+                    {asset_id}. {asset.title}
+                    ({asset.progress.toFixed(2) + "%"}))
                 </div>
             )
         }
         return renderings
+    },
+    onSubmitAsset: function(event) {
+        event.preventDefault()
+        var youtube_id = this.refs.ytid.getDOMNode().value
+        socket.emit("add asset from youtube", youtube_id)
     }
 })
 
