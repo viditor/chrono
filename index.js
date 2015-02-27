@@ -30,12 +30,10 @@ var Temporality = React.createClass({
     renderVideos: function() {
         var renderings = []
         for(var asset_id in this.state.assets) {
-            var asset = this.state.assets[asset_id];
+            var asset = this.state.assets[asset_id]
             renderings.push(
-                <div key={asset_id}>
-                    {asset_id}. {asset.title}
-                    ({asset.progress.toFixed(2) + "%"}))
-                </div>
+                <Asset key={asset_id}
+                    data={asset}/>
             )
         }
         return renderings
@@ -44,6 +42,45 @@ var Temporality = React.createClass({
         event.preventDefault()
         var youtube_id = this.refs.ytid.getDOMNode().value
         socket.emit("add asset from youtube", youtube_id)
+    }
+})
+
+var Asset = React.createClass({
+    render: function() {
+        return (
+            <div className="asset">
+                {this.renderThumbnail()}
+                {this.renderTitle()}
+                {this.renderProgress()}
+            </div>
+        )
+    },
+    renderThumbnail: function() {
+        if(this.props.data.thumbnail != undefined) {
+            var thumbnail = "url(" + this.props.data.thumbnail + ")"
+            return (
+                <div className="thumbnail" style={{backgroundImage: thumbnail}}/>
+            )
+        }
+    },
+    renderTitle: function() {
+        return (
+            <b className="title">
+                {this.props.data.title}
+            </b>
+        )
+    },
+    renderProgress: function() {
+        if(this.props.data.progress < 100)
+        {
+            var progress = this.props.data.progress.toFixed(2) + "%"
+            return (
+                <div className="progress">
+                    <div className="bar" style={{width: progress}}/>
+                    <div className="text">{progress}</div>
+                </div>
+            )
+        }
     }
 })
 

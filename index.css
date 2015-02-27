@@ -17,3 +17,81 @@ input[type=text]
 {
 	width: 320px;
 }
+
+.asset
+{
+	width: 12em;
+	height: 9em;
+	padding: 0.5em;
+	position: relative;
+	margin: 0em 0.5em 0.5em 0em;
+
+	overflow: hidden;
+	border-radius: 0.1em;
+	background-color: #F8F8F8;
+}
+
+.asset > .thumbnail
+{
+	top: 0em;
+	left: 0em;
+	right: 0em;
+	bottom: 0em;
+	position: absolute;
+
+	background-size: contain;
+	background-color: red;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.asset > .title
+{
+	top: 0em;
+	left: 0em;
+	right: 0em;
+	height: 1em;
+	padding: 0.5em;
+	overflow: hidden;
+	position: absolute;
+
+	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.asset > .progress
+{
+	left: 0em;
+	right: 0em;
+	bottom: 0em;
+	height: 1.5em;
+	position: absolute;
+
+	background-color: #BB3A3A;
+}
+
+.asset > .progress > .bar
+{
+	top: 0em;
+	left: 0em;
+	width: 0%;
+	bottom: 0em;
+	position: absolute;
+
+	background-color: #CD5C5C;
+}
+
+.asset > .progress > .text
+{
+	top: 0em;
+	left: 0em;
+	right: 0em;
+	bottom: 0em;
+	z-index: 2;
+	padding: 0.25em;
+	position: absolute;
+
+	color: #F8F8F8;
+	text-align: center;
+}
