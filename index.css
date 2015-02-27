@@ -39,8 +39,8 @@ input[type=text]
 	bottom: 0em;
 	position: absolute;
 
+	background-color: #FFF;
 	background-size: contain;
-	background-color: red;
 	background-position: center;
 	background-repeat: no-repeat;
 }
@@ -58,6 +58,8 @@ input[type=text]
 	font-weight: bold;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	
+	background-color: #CD5C5C;
 }
 
 .asset > .progress
