@@ -121,9 +121,9 @@ gulp.task("server", function() {
     gulp_connect.server({
         root: __dirname + "/build",
         livereload: true,
-        port: 8080
+        port: 8888
     })
-    opn("http://localhost:8080")
+    opn("http://localhost:8888")
 })
 
 process.on("uncaughtException", function (error) {
