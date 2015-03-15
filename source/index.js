@@ -3,7 +3,7 @@ var Socketio = require("socket.io-client")
 
 var socket = Socketio.connect("http://localhost:8080")
 
-var Temporality = React.createClass({
+var Chrono = React.createClass({
     getInitialState: function() {
         return {
             assets: {}
@@ -87,4 +87,4 @@ var Asset = React.createClass({
     }
 })
 
-React.render(<Temporality/>, document.body)
+React.render(<Chrono/>, document.body)
