@@ -1,4 +1,7 @@
-var socket = io.connect("http://localhost:8080")
+var React = require("react/addons")
+var Socketio = require("socket.io-client")
+
+var socket = Socketio.connect("http://localhost:8080")
 
 var Temporality = React.createClass({
     getInitialState: function() {
